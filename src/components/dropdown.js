@@ -16,12 +16,12 @@ class Dropdown extends React.Component {
 
         return (
            <Grid columns='equal centered'>
-           <Grid.Column width={11}>
-             <Segment style={{background:(255,255,255,1)}}>
+           <Grid.Column width={12}>
+             <Segment style={{background:(255,255,255,0.7)}}>
              <select className="originDropdown ui search dropdown loading">
                 {optionItems}
              </select>
-             <select style={{Left: 80}} className="originDropdown ui search dropdown loading">
+             <select style={{marginLeft: 40}} className="originDropdown ui search dropdown loading">
                 {optionItems}
              </select>
              </Segment>
