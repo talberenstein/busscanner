@@ -1,30 +1,42 @@
 import React from 'react'
+import CreatableSelect from 'react-select/lib/Creatable';
+import Select from 'react-select';
 import { Grid, Segment } from 'semantic-ui-react'
 
 
-class Dropdown extends React.Component {
+class TravelOrigin extends React.Component {
     constructor() {
         super();
     }
+    state = {
+        selectedOrigin: false,
+        selectedOption: null,
+        filterOptions: null,
+    }
+
+    handleOnChange = (selectedOption) => {
+        this.setState({ selectedOption});
+    }
 
     render () {
-        let locations = this.props.state.data;
-        console.log(locations)
-        let optionItems = locations.map((data) =>
-                <option key={data.name}>{data.name}</option>
-            );
-
+        const { selectedOption } = this.state;
+        let locationsOrigin = this.props.state.origin;
+        let itemsOrigin = locationsOrigin.map((origin) =>
+            [
+                { value: origin.id, label: origin.name },
+            ]
+        );
+        let optionsOrigin = []
+        itemsOrigin.forEach(element => {
+            optionsOrigin.push(element[0])
+        });
         return (
-           <Grid columns='equal centered'>
+           <Grid columns='centered'>
            <Grid.Column width={12}>
-             <Segment style={{background:(255,255,255,0.7)}}>
-             <select className="originDropdown ui search dropdown loading">
-                {optionItems}
-             </select>
-             <select style={{marginLeft: 40}} className="originDropdown ui search dropdown loading">
-                {optionItems}
-             </select>
-             </Segment>
+           <Select
+              onChange={this.handleOnChange}
+              options={optionsOrigin}
+            />
            </Grid.Column>
          </Grid>
         )
@@ -32,4 +44,4 @@ class Dropdown extends React.Component {
 }
 
 
-export default Dropdown
+export default TravelOrigin
