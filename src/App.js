@@ -56,7 +56,13 @@ class App extends Component {
     return (
       <div className="App-header">
       <div className="top"></div>
-      <Segment style= {{backgroundColor:'rgba(102, 102, 102, 0.5)'}}>
+      <Segment className='segmentGrey' style= {{
+        backgroundColor:'rgba(102, 102, 102, 0.5)',
+        position: 'fixed',
+        width: '100vh',
+        left: '50vh'
+      }}
+      >
       <div>
       <DDOrigin 
         showDestination={this.showDestination} 
@@ -68,6 +74,13 @@ class App extends Component {
         showDates={this.showDates}
         state={this.state} 
       />
+      </div>
+      <div style={{
+        alignContent: 'center',
+        alignItems: 'center'
+      }}>
+        <span>asdfadsfadsf</span>
+        <span>22333333</span>
       </div>
       </Segment>
       </div>
