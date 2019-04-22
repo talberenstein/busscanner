@@ -8,17 +8,17 @@ class TravelDestination extends React.Component {
         super();
     }
     state = {
-        selectedDestination: false,
+
         selectedOption: null,
-        filterOptions: null,
+
         }
 
     handleOnChange = (selectedOption) => {
-        this.setState({ selectedOption});
+        this.props.showDates(selectedOption)
     }
 
     render () {
-        const { selectedOption } = this.state;
+
         let locationsDestination = this.props.state.origin;
         let itemsDestination = locationsDestination.map((origin) =>
             [
@@ -27,7 +27,7 @@ class TravelDestination extends React.Component {
         );
         let optionsDestination = []
         itemsDestination.forEach(element => {
-            itemsDestination.push(element[0])
+            optionsDestination.push(element[0])
         });
 
         return (

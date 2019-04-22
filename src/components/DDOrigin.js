@@ -8,6 +8,7 @@ class TravelOrigin extends React.Component {
         super();
     }
 
+
     handleOnChange = (selectedOption) => {
         this.props.showDestination(selectedOption)
     }

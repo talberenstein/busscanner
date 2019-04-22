@@ -14,25 +14,44 @@ class App extends Component {
 
     this.state = {
       origin: [],
-      myVar: false,
-      originSelected: ''
+      destination: [],
+      originSelected: '',
+      destinationSelected: '',
+    }
+
+    this.getLocations = (url) => {
+      return (
+        fetch('http://localhost:3000/locations'+url)
+        .then(response => response.json())
+      )
     }
     
-    this.showDestination = (originSelected) => {this.setState({
-      myVar: true,
-      originSelected
-    })
+    this.showDestination = (originSelected) => {
+      this.setState({
+        originSelected,
+      })
+      this.getLocations('')
+      .then(destination => this.setState({ destination }));
     }
+
+    this.showDates = (destinationSelected) => {
+      this.setState({
+        destinationSelected,
+      })
+    }
+  
+  
+  
+  
+  
   }
 
   componentDidMount() {
-    
-    fetch('http://localhost:3000/locations')
-    .then(response => response.json())
-    .then(origin => this.setState({ origin }));
+    this.getLocations('')
+    .then(origin => this.setState({ origin }))
   }
 
-  
+
   render() {
     return (
       <div className="App-header">
@@ -44,8 +63,11 @@ class App extends Component {
         state={this.state} 
       />
       </div>
-      <div style={{display: this.state.myVar ? 'block' : 'none' }}>
-      <DDDestination  state={this.state} />
+      <div style={{display: this.state.originSelected ? 'block' : 'none' }}>
+      <DDDestination  
+        showDates={this.showDates}
+        state={this.state} 
+      />
       </div>
       </Segment>
       </div>
