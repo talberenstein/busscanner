@@ -26,15 +26,11 @@ class DateTimeForm extends React.Component {
         this.props.showSubmit(value)     
         }
     }
-
-    handleCheckboxChange = changeEvent => {
-        this.props.showDateReturn()
-    };
    
     render() {
       return (
         <Grid columns='centered'>
-        <Grid.Column width={6}>
+        <Grid.Column width={12}>
           <DateInput
             name="date"
             placeholder="Date Departure"
@@ -42,13 +38,6 @@ class DateTimeForm extends React.Component {
             iconPosition="left"
             onChange={this.handleChange}
           />
-        </Grid.Column>
-        <Grid.Column width={6}>
-        <Checkbox
-            checked = {this.props.checked}
-            onChange = {this.handleCheckboxChange}
-        />
-            <span style={{color: 'purple', marginLeft: 10}}><b>Do you want to return?</b></span>
         </Grid.Column>
         </Grid>
       );

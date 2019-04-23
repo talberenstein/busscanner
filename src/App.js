@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 import './App.css';
+import { Segment } from 'semantic-ui-react'
+
 import DDOrigin from './components/DDOrigin'
 import DDDestination from './components/DDDestination'
 import DateOrigin from './components/dateOrigin'
-import ButtonSubmit from './components/buttonComponent'
-
-import { Segment, Button } from 'semantic-ui-react'
+import DateReturn from './components/dateReturn'
 import SubmitButton from './components/buttonComponent';
 
 /* <Dropdown placeholder='State' search selection options={stateOptions} /> */
@@ -20,7 +20,9 @@ class App extends Component {
       destination: [],
       originSelected: '',
       destinationSelected: '',
-      dateSelected: '',
+      dateDepartSelected: '',
+      dateReturnSelected: '',
+      checked: false,
     }
 
     this.getLocations = (url) => {
@@ -44,10 +46,24 @@ class App extends Component {
       })
     }
 
-    this.showSubmit = (dateSelected) => {
+    this.showSubmitOneWay = (dateDepartSelected) => {
       this.setState({
-        dateSelected,
+        dateDepartSelected,
       })
+    }
+
+    this.showSubmitReturn = (dateReturnSelected) => {
+      this.setState({
+        dateReturnSelected,
+      })
+    }
+
+
+    this.showDateReturn = () => {
+      this.setState({
+        checked: !this.state.checked
+      })
+      //(this.state.checked ?  )
     }
   
   
@@ -75,24 +91,34 @@ class App extends Component {
         >
         <div>
         <DDOrigin 
-          showDestination={this.showDestination} 
-          state={this.state} 
+          showDestination = {this.showDestination} 
+          state = {this.state} 
         />
         </div>
         <div style={{ display: this.state.originSelected ? 'block' : 'none' }}>
         <DDDestination  
-          showDates={this.showDates}
-          state={this.state} 
+          showDates = {this.showDates}
+          state = {this.state} 
         />
         </div>
         <div style={{ display: this.state.destinationSelected ? 'block' : 'none' }}>
           <DateOrigin
-            showSubmit={this.showSubmit}
-            state={this.state}
-            />
+            showSubmit = {this.showSubmitOneWay}
+            showDateReturn = {this.showDateReturn}
+            state = {this.state}
+          />
         </div>
-        <div style={{display: this.state.dateSelected ? 'block' : 'none' }}>
-          <SubmitButton/>
+        <div style={{ display: this.state.checked ? 'block' : 'none' }}>
+          <DateReturn
+            showSubmit = {this.showSubmitReturn}
+            state = {this.state}
+          />
+        </div>
+        <div style={{
+          display: (this.state.dateDepartSelected && !this.state.checked) || (this.state.dateReturnSelected && this.state.checked) ? 'block' : 'none' 
+          }}>
+          <SubmitButton
+          />
         </div>
         </Segment>
         </div>

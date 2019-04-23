@@ -1,13 +1,8 @@
 import React from 'react'
+import { Button, Icon } from 'semantic-ui-react'
 
-import {
-    DateInput,
-    TimeInput,
-    DateTimeInput,
-    DatesRangeInput
-  } from 'semantic-ui-calendar-react';
 
-import { Grid, Checkbox } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 
 class SubmitButton extends React.Component {
@@ -35,12 +30,10 @@ class SubmitButton extends React.Component {
       return (
         <Grid columns='centered'>
         <Grid.Column width={6}>
-            <div class="ui animated fade button" tabindex="0">
-                <div class="visible content">Submit your travel</div>
-                <div class="hidden content">
-                Go Ahead!
-                </div>
-            </div>
+            <Button animated='fade'>
+            <Button.Content visible>Book your travel</Button.Content>
+            <Button.Content hidden><Icon name='arrow right' /></Button.Content>
+            </Button>
         </Grid.Column>
         </Grid>
       );

@@ -1,6 +1,6 @@
 import React from 'react'
 import Select from 'react-select';
-import { Grid, Segment } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 
 class TravelDestination extends React.Component {
