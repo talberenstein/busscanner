@@ -1,8 +1,10 @@
 import React from 'react'
 import { Header, Segment, Icon, Step, Grid } from 'semantic-ui-react'
 
+import './Core.css'
+
 const Core = () => (
-<Grid columns="equal">
+<Grid columns="centered">
   <Grid.Row>
     <Grid.Column>
       <Segment clearing>
@@ -16,33 +18,41 @@ const Core = () => (
     </Grid.Column>
   </Grid.Row>
 
-  <Grid.Row>
+  <Grid.Row style={{marginTop: -30}}>
     <Grid.Column>
       <Segment>
-      <Step.Group>
-    <Step>
-      <Icon name='truck' />
-      <Step.Content>
-        <Step.Title>Shipping</Step.Title>
-        <Step.Description>Choose your shipping options</Step.Description>
-      </Step.Content>
-    </Step>
-
+    
+    <Step.Group widths={4}>
     <Step active>
-      <Icon name='payment' />
+      <Icon name='bus' />
       <Step.Content>
-        <Step.Title>Billing</Step.Title>
-        <Step.Description>Enter billing information</Step.Description>
+        <Step.Title>Trip</Step.Title>
+        <Step.Description>put dateFrom - dateTo - Origin - Destination</Step.Description>
       </Step.Content>
     </Step>
 
-    <Step disabled>
-      <Icon name='info' />
+    <Step>
+      <Icon name='clipboard' />
       <Step.Content>
-        <Step.Title>Confirm Order</Step.Title>
+        <Step.Title>Seats</Step.Title>
+      </Step.Content>
+    </Step>
+
+    <Step>
+      <Icon name='credit card' />
+      <Step.Content>
+        <Step.Title>Payment</Step.Title>
+      </Step.Content>
+    </Step>
+
+    <Step>
+      <Icon name='handshake' />
+      <Step.Content>
+        <Step.Title>Confirmation</Step.Title>
       </Step.Content>
     </Step>
   </Step.Group>
+
       </Segment>
     </Grid.Column>
   </Grid.Row>

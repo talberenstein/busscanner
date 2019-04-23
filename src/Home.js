@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
 import './Home.css';
-import { Segment } from 'semantic-ui-react'
+import { Segment, Grid, Button, Icon } from 'semantic-ui-react'
 
 import DDOrigin from './components/Home/DDOrigin'
 import DDDestination from './components/Home/DDDestination'
 import DateOrigin from './components/Home/dateOrigin'
 import DateReturn from './components/Home/dateReturn'
 import SubmitButton from './components/Home/buttonComponent';
+
+import { Redirect, Link } from 'react-router-dom'
 
 /* <Dropdown placeholder='State' search selection options={stateOptions} /> */
 
@@ -24,6 +26,7 @@ class App extends Component {
       dateDepartSelected: '',
       dateReturnSelected: '',
       checked: false,
+      redirect: false
     }
 
     this.getLocations = (url) => {
@@ -66,6 +69,9 @@ class App extends Component {
       console.log(
         this.state
       )
+      this.setState({
+        redirect: true
+      })
     }}
 
 
@@ -73,7 +79,13 @@ class App extends Component {
     this.getLocations('')
     .then(origin => this.setState({ origin }))
   }
+
+
   render() {
+    const { redirect } = this.state
+    if(redirect) return <Redirect to={{
+      pathname: `/core/${this.state.destinationSelected.value}`
+    }}/>;
     return (
       <div className="App-header">
       <div className="top">
@@ -110,10 +122,8 @@ class App extends Component {
           state = {this.state}
         />
       </div>
-      <div style={{
-        display: (this.state.dateDepartSelected && !this.state.checked) || (this.state.dateReturnSelected && this.state.checked) ? 'block' : 'none' 
-        }}>
-        <SubmitButton
+      <div style={{display: (this.state.dateDepartSelected && !this.state.checked) || (this.state.dateReturnSelected && this.state.checked) ? 'block' : 'none' }}>
+        <SubmitButton 
         submitTravel = {this.submitTravel}
         />
       </div>

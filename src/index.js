@@ -10,7 +10,7 @@ import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 const routing = (
   <Router>
       <Route exact path="/" component={Home} />
-      <Route path="/Core" component={Core} />
+      <Route path="/core/" component={Core} />
   </Router>
   )
 
