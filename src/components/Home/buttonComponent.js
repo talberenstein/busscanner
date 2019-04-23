@@ -30,7 +30,10 @@ class SubmitButton extends React.Component {
       return (
         <Grid columns='centered'>
         <Grid.Column width={6}>
-            <Button animated='fade'>
+            <Button positive
+            animated='fade'
+            onClick={this.props.submitTravel}
+            >
             <Button.Content visible>Book your travel</Button.Content>
             <Button.Content hidden><Icon name='arrow right' /></Button.Content>
             </Button>

@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 
-import './App.css';
+import './Home.css';
 import { Segment } from 'semantic-ui-react'
 
-import DDOrigin from './components/DDOrigin'
-import DDDestination from './components/DDDestination'
-import DateOrigin from './components/dateOrigin'
-import DateReturn from './components/dateReturn'
-import SubmitButton from './components/buttonComponent';
+import DDOrigin from './components/Home/DDOrigin'
+import DDDestination from './components/Home/DDDestination'
+import DateOrigin from './components/Home/dateOrigin'
+import DateReturn from './components/Home/dateReturn'
+import SubmitButton from './components/Home/buttonComponent';
 
 /* <Dropdown placeholder='State' search selection options={stateOptions} /> */
 
 class App extends Component {
+  
   constructor(props){
     super(props)
 
@@ -56,8 +57,15 @@ class App extends Component {
 
     this.showDateReturn = () => {
       this.setState({
-        checked: !this.state.checked
+        checked: !this.state.checked,
+        dateReturnSelected: ''
       })
+    }
+
+    this.submitTravel = () => {
+      console.log(
+        this.state
+      )
     }}
 
 
@@ -68,7 +76,8 @@ class App extends Component {
   render() {
     return (
       <div className="App-header">
-      <div className="top"></div>
+      <div className="top">
+      </div>
       <Segment style= {{
         backgroundColor:'rgba(102, 102, 102, 0.5)',
         position: 'fixed',
@@ -77,7 +86,7 @@ class App extends Component {
       }}
       >
       <div>
-      <DDOrigin 
+      <DDOrigin
         showDestination = {this.showDestination} 
         state = {this.state} 
       />
@@ -105,6 +114,7 @@ class App extends Component {
         display: (this.state.dateDepartSelected && !this.state.checked) || (this.state.dateReturnSelected && this.state.checked) ? 'block' : 'none' 
         }}>
         <SubmitButton
+        submitTravel = {this.submitTravel}
         />
       </div>
       </Segment>
