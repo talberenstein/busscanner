@@ -7,6 +7,29 @@ import * as serviceWorker from './serviceWorker';
 
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 
+/* Import Redux store and the actions */
+import configureStore  from './store/createStore';
+import {toggleTravelForm, handleInputChange} from './actions';
+
+const store = configureStore();
+ 
+//Note that subscribe() returns a function for unregistering the listener
+ 
+const unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+)
+
+/* returns isContactFormHidden returns false */
+store.dispatch(toggleTravelForm());
+/* returns isContactFormHidden returns false */
+store.dispatch(toggleTravelForm());
+ 
+/* updates the state of contacts.newContact object */
+store.dispatch(handleInputChange('origin', 'Seoul'))
+ 
+
+unsubscribe();
+
 const routing = (
   <Router>
       <Route exact path="/" component={Home} />
