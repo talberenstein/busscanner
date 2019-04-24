@@ -84,7 +84,7 @@ class App extends Component {
   render() {
     const { redirect } = this.state
     if(redirect) return <Redirect to={{
-      pathname: `/core/${this.state.destinationSelected.value}`
+      pathname: `/core/${this.state.destinationSelected.label}`
     }}/>;
     return (
       <div className="App-header">

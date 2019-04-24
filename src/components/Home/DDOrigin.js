@@ -1,5 +1,5 @@
 import React from 'react'
-import Select from 'react-select';
+import CreateTableSelect from 'react-select';
 import { Grid } from 'semantic-ui-react'
 
 
@@ -27,7 +27,7 @@ class TravelOrigin extends React.Component {
         return (
            <Grid columns='centered'>
            <Grid.Column width={12}>
-           <Select
+           <CreateTableSelect
               onChange={this.handleOnChange}
               options={optionsOrigin}
             />
